@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="tyuiu.cources.programming.interfaces">
-      <HintPath>..\..\Tyuiu.PlatonovMV.Sprint4\tyuiu.cources.programming.interfaces.dll</HintPath>
+      <HintPath>..\Tyuiu.PlatonovMV.Sprint5\tyuiu.cources.programming.interfaces.dll</HintPath>
     </Reference>
   </ItemGroup>
 
