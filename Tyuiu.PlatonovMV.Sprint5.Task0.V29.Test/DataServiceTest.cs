@@ -16,6 +16,6 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task0.V29.Test
             
             bool fileExists = File.Exists(path);
             Assert.IsTrue(fileExists, $"Файл не найден по пути: {path}");
-        }
+        } //
     }
 }
