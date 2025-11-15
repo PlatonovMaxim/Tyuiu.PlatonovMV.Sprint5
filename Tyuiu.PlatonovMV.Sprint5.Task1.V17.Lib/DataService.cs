@@ -30,7 +30,7 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task1.V17.Lib
                     value = Math.Round(value, 2);
 
                     
-                    writer.WriteLine(value.ToString().Replace(",", ".")); 
+                   
                 }
             }
 
