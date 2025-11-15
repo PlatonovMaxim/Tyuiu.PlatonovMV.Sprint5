@@ -12,15 +12,13 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task1.V17.Lib
 
             using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("x\tF(x)");
-
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double denominator = Math.Sin(x) + 1;
                     double value;
 
                     
-                    if (Math.Abs(denominator) < 0.0001) 
+                    if (Math.Abs(denominator) < 0.0001)
                     {
                         value = 0;
                     }
@@ -30,7 +28,9 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task1.V17.Lib
                     }
 
                     value = Math.Round(value, 2);
-                    writer.WriteLine($"{x}\t{value}");
+
+                    
+                    writer.WriteLine(value.ToString().Replace(",", ".")); 
                 }
             }
 
