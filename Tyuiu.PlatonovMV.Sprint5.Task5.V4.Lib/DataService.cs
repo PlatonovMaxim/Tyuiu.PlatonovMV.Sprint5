@@ -18,8 +18,11 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task5.V4.Lib
 
             foreach (string p in parts)
             {
-                double x = double.Parse(p, CultureInfo.InvariantCulture);
-                res *= x;
+                string trimmed = p.Trim();
+                if (double.TryParse(trimmed, NumberStyles.Any, CultureInfo.InvariantCulture, out double x))
+                {
+                    res *= x;
+                }
             }
 
             return Math.Round(res, 3);
