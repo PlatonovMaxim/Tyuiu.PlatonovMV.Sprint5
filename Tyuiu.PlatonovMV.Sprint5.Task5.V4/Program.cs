@@ -29,6 +29,7 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task5.V4
             Console.WriteLine("Путь к входному файлу:");
             Console.WriteLine(path);
             Console.WriteLine();
+            Console.WriteLine("***************************************************************************");
             Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
             Console.WriteLine("***************************************************************************");
 
@@ -44,7 +45,6 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task5.V4
                 Console.WriteLine(ex.Message);
             }
 
-            Console.WriteLine("***************************************************************************");
             Console.WriteLine("Нажмите любую клавишу для выхода...");
             Console.ReadKey();
         }
