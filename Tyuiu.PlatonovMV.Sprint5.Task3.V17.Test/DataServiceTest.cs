@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib;
+using System.IO;
+using Tyuiu.PlatonovMV.Sprint5.Task2.V5.Lib;
 
-namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Test
+namespace Tyuiu.PlatonovMV.Sprint5.Task2.V5.Test
 {
     [TestClass]
     public class DataServiceTest
@@ -9,14 +10,18 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Test
         [TestMethod]
         public void CheckSaveToFileTextData()
         {
+            int[,] matrix = new int[3, 3]
+            {
+                { 9, 6, 6 },
+                { 8, 7, 2 },
+                { 1, 7, 8 }
+            };
+
             DataService ds = new DataService();
-            string result = ds.SaveToFileTextData(3);
+            string path = ds.SaveToFileTextData(matrix);
 
-            
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.Length > 0);
-
-            
+            bool fileExists = File.Exists(path);
+            Assert.AreEqual(true, fileExists);
         }
     }
 }

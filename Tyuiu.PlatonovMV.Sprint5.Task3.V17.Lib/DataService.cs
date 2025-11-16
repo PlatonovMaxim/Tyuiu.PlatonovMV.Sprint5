@@ -1,31 +1,48 @@
-﻿using System;
+﻿
+using System;
 using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
 
 
-namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib
+namespace Tyuiu.PlatonovMV.Sprint5.Task2.V5.Lib
 {
-    public class DataService : ISprint5Task3V17
+    public class DataService : ISprint5Task2V5
     {
-        public string SaveToFileTextData(int x)
+        public string SaveToFileTextData(int[,] matrix)
         {
-            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask3.bin");
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask2.csv");
 
-            //  y = x⁴ + x³/2 + 2x² + x
-            double y = Math.Pow(x, 4) + Math.Pow(x, 3) / 2 + 2 * Math.Pow(x, 2) + x;
-            y = Math.Round(y, 3);
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
 
-            
-            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
+            string output = "";
+
+            for (int i = 0; i < rows; i++)
             {
-                writer.Write(y);
+                for (int j = 0; j < cols; j++)
+                {
+                    int value = matrix[i, j];
+                    if (value % 2 != 0)
+                    {
+                        value = 0;
+                    }
+
+                    output += value.ToString();
+
+                    if (j < cols - 1)
+                    {
+                        output += ";";
+                    }
+                }
+
+                if (i < rows - 1)
+                {
+                    output += "\n";
+                }
             }
 
-            
-            byte[] fileBytes = File.ReadAllBytes(path);
-            string base64String = Convert.ToBase64String(fileBytes);
-
-            return base64String;
+            File.WriteAllText(path, output);
+            return path;
         }
     }
 }
