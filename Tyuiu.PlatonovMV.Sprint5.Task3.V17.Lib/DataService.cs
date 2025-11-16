@@ -1,47 +1,27 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
 
-
-namespace Tyuiu.PlatonovMV.Sprint5.Task2.V5.Lib
+namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib
 {
-    public class DataService : ISprint5Task2V5
+    public class DataService : ISprint5Task3V17
     {
-        public string SaveToFileTextData(int[,] matrix)
+        public string SaveToFileTextData(int x)
         {
-            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask2.csv");
+            
+            double result = 2.4 * Math.Pow(x, 3) + 0.4 * Math.Pow(x, 2) - 1.4 * x + 4.1;
+            result = Math.Round(result, 3);
 
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
+            
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask3.bin");
 
-            string output = "";
-
-            for (int i = 0; i < rows; i++)
+            
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
             {
-                for (int j = 0; j < cols; j++)
-                {
-                    int value = matrix[i, j];
-                    if (value % 2 != 0)
-                    {
-                        value = 0;
-                    }
-
-                    output += value.ToString();
-
-                    if (j < cols - 1)
-                    {
-                        output += ";";
-                    }
-                }
-
-                if (i < rows - 1)
-                {
-                    output += "\n";
-                }
+                writer.Write(result);
             }
 
-            File.WriteAllText(path, output);
+            
             return path;
         }
     }

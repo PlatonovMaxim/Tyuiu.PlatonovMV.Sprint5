@@ -1,27 +1,29 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib;
 using System.IO;
-using Tyuiu.PlatonovMV.Sprint5.Task2.V5.Lib;
 
-namespace Tyuiu.PlatonovMV.Sprint5.Task2.V5.Test
+namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Test
 {
     [TestClass]
     public class DataServiceTest
     {
         [TestMethod]
-        public void CheckSaveToFileTextData()
+        public void TestSaveToFileTextData()
         {
-            int[,] matrix = new int[3, 3]
-            {
-                { 9, 6, 6 },
-                { 8, 7, 2 },
-                { 1, 7, 8 }
-            };
-
             DataService ds = new DataService();
-            string path = ds.SaveToFileTextData(matrix);
+            int x = 3;
 
-            bool fileExists = File.Exists(path);
-            Assert.AreEqual(true, fileExists);
+            string path = ds.SaveToFileTextData(x);
+            Assert.IsTrue(File.Exists(path));
+
+            double expected = Math.Round(2.4 * Math.Pow(x, 3) + 0.4 * Math.Pow(x, 2) - 1.4 * x + 4.1, 3);
+
+            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+            {
+                double result = reader.ReadDouble();
+                Assert.AreEqual(expected, result);
+            }
         }
     }
 }
