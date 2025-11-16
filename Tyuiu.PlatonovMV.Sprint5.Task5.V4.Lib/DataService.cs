@@ -15,15 +15,22 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task5.V4.Lib
                 .Split(new char[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
             double res = 1.0;
+            bool hasAny = false;
 
             foreach (string p in parts)
             {
-                string trimmed = p.Trim();
-                if (double.TryParse(trimmed, NumberStyles.Any, CultureInfo.InvariantCulture, out double x))
+                double x = double.Parse(p, CultureInfo.InvariantCulture);
+
+                
+                if (x % 1 != 0)
                 {
                     res *= x;
+                    hasAny = true;
                 }
             }
+
+            if (!hasAny)
+                return 0;
 
             return Math.Round(res, 3);
         }
