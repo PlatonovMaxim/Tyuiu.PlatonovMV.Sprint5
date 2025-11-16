@@ -33,24 +33,25 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17
             Console.WriteLine("***************************************************************************");
 
             DataService ds = new DataService();
-            string path = ds.SaveToFileTextData(x);
+            string base64Result = ds.SaveToFileTextData(x);
 
             
-            double result = 2 * Math.Pow(x, 3) + 0.5 * Math.Pow(x, 2) - 3.5 * x + 2;
+            double result = Math.Pow(x, 4) + Math.Pow(x, 3) / 2 + 2 * Math.Pow(x, 2) + x;
             result = Math.Round(result, 3);
 
-            Console.WriteLine("Результат: " + result);
-            Console.WriteLine("Файл сохранен по пути: " + path);
+            Console.WriteLine("Результат вычисления: " + result);
+            Console.WriteLine("Base64 представление файла: " + base64Result);
 
             
-            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+            byte[] fileBytes = Convert.FromBase64String(base64Result);
+            using (MemoryStream stream = new MemoryStream(fileBytes))
+            using (BinaryReader reader = new BinaryReader(stream))
             {
-                double fileValue = reader.ReadDouble();
-                Console.WriteLine("Значение из файла: " + fileValue);
+                double valueFromBytes = reader.ReadDouble();
+                Console.WriteLine("Значение из Base64: " + valueFromBytes);
             }
 
             Console.ReadKey();
         }
     }
 }
-

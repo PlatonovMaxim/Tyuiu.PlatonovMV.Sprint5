@@ -2,6 +2,7 @@
 using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
 
+
 namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib
 {
     public class DataService : ISprint5Task3V17
@@ -10,8 +11,8 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib
         {
             string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask3.bin");
 
-            //  y = 2x³ + 0.5x² - 3.5x + 2
-            double y = 2 * Math.Pow(x, 3) + 0.5 * Math.Pow(x, 2) - 3.5 * x + 2;
+            //  y = x⁴ + x³/2 + 2x² + x
+            double y = Math.Pow(x, 4) + Math.Pow(x, 3) / 2 + 2 * Math.Pow(x, 2) + x;
             y = Math.Round(y, 3);
 
             
@@ -20,7 +21,11 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task3.V17.Lib
                 writer.Write(y);
             }
 
-            return path;
+            
+            byte[] fileBytes = File.ReadAllBytes(path);
+            string base64String = Convert.ToBase64String(fileBytes);
+
+            return base64String;
         }
     }
 }
