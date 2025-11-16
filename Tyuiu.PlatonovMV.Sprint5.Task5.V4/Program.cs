@@ -18,8 +18,8 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task5.V4
             Console.WriteLine("* Выполнил: Платонов Максим Владимирович | ИСТНб-25-1                     *");
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* УСЛОВИЕ:                                                                *");
-            Console.WriteLine("* Дан файл C:\\DataSprint5\\InPutDataFileTask5V4.txt, в котором есть набор *");
-            Console.WriteLine("* значений. Найти произведение всех вещественных чисел в файле.          *");
+            Console.WriteLine("* Дан файл C:\\DataSprint5\\InPutDataFileTask5V4.txt, в котором есть набор*");
+            Console.WriteLine("* значений. Найти произведение всех вещественных чисел в файле.           *");
             Console.WriteLine("* Полученный результат округлить до трёх знаков после запятой и вывести   *");
             Console.WriteLine("* на консоль.                                                             *");
             Console.WriteLine("***************************************************************************");
