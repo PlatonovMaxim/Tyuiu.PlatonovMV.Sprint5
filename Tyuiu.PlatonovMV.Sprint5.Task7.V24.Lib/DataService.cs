@@ -46,13 +46,9 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task7.V24.Lib
 
             string resultText = sb.ToString();
 
-            string? dir = Path.GetDirectoryName(path);
-            if (string.IsNullOrEmpty(dir))
-            {
-                dir = ".";
-            }
-
-            string outPath = Path.Combine(dir, "OutPutDataFileTask7V24.txt");
+            
+            string tempDir = Path.GetTempPath();
+            string outPath = Path.Combine(tempDir, "OutPutDataFileTask7V24.txt");
 
             File.WriteAllText(outPath, resultText, Encoding.UTF8);
 
