@@ -26,7 +26,9 @@ namespace Tyuiu.PlatonovMV.Sprint5.Task7.V24
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
             Console.WriteLine("***************************************************************************");
 
-            string path = @"C:\DataSprint5\InPutDataFileTask7V24.txt";
+            string baseDir = @"C:\DataSprint5";
+            string fileName = "InPutDataFileTask7V24.txt";
+            string path = Path.Combine(baseDir, fileName);
 
             Console.WriteLine("Путь к входному файлу:");
             Console.WriteLine(path);
